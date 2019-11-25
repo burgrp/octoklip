@@ -1,0 +1,27 @@
+version: "2.3"
+
+services:
+  klipper:
+    image: burgrp/klipper
+    restart: always
+    privileged: true
+    volumes: 
+      - /dev:/dev
+      - /tmp:/tmp
+      - /data:/data
+    environment:
+      KLIPPER_LOG: "/data/klipper.log"
+      KLIPPER_CONFIG: "/data/printer.cfg"
+
+  octoprint:
+      image: burgrp/octoprint
+      restart: always
+      privileged: true
+      ports:
+        - 80:5000
+      volumes: 
+        - /dev:/dev
+        - /tmp:/tmp
+        - /data:/root/.octoprint
+      labels:
+        farm.device.service: "private octoprint 80"
