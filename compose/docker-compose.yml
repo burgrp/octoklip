@@ -14,14 +14,14 @@ services:
       KLIPPER_CONFIG: "/data/printer.cfg"
 
   octoprint:
-      image: burgrp/octoprint
-      restart: always
-      privileged: true
-      ports:
-        - 80:5000
-      volumes: 
-        - /dev:/dev
-        - /tmp:/tmp
-        - /data:/root/.octoprint
-      labels:
-        farm.device.service: "private octoprint 80"
+    image: burgrp/octoprint
+    restart: always
+    privileged: true
+    ports:
+      - 90:5000
+    volumes:
+      - /dev:/dev
+      - /tmp:/tmp
+      - /data:/root
+    labels:
+      farm.device.service: "private octoprint 90"
