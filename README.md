@@ -19,3 +19,19 @@ docker buildx build --platform linux/arm/v7,linux/amd64 . -t burgrp/octoprint --
 cd klipper
 docker buildx build --platform linux/arm/v7,linux/amd64 . -t burgrp/klipper --push
 ```
+
+### Shutdown Commands
+Restart OctoPrint
+```
+pkill -f "octoprint serve"
+```
+
+Restart system
+```
+nsenter -t 1 -m -u -n -i reboot
+```
+
+Shutdown system
+```
+nsenter -t 1 -m -u -n -i poweroff
+```

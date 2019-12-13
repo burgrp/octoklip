@@ -17,6 +17,7 @@ services:
     image: burgrp/octoprint
     restart: always
     privileged: true
+    pid: "host"
     ports:
       - 90:5000
     volumes:
