@@ -25,4 +25,4 @@ services:
       - /tmp:/tmp
       - /data:/root
     labels:
-      farm.device.service: "private octoprint 90"
+      farm.device.services: "90"
