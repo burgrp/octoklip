@@ -23,6 +23,22 @@ docker buildx build --platform linux/arm/v7,linux/amd64 . -t burgrp/klipper --pu
 ```
 
 ## DEVICE.FARM installation
+
+Host image build for OrangePi Zero:
+```sh
+export BUILDER_HOME=~/df/image-builder/builder
+$BUILDER_HOME/build burgrp/orangepi-zero-octoprint \
+    orangepi-zero \
+    dropbear avahi \
+    ./host-image-layer \
+    $BUILDER_HOME/../device-farm
+```
+
+Host image installation:
+```sh
+defa install <device-id> /dev/mmcblk0 --wifi=ssid:password --ssh - -i burgrp/orangepi-zero-octoprint
+```
+
 ```sh
 cd compose
 defa proxy <device-id> -- docker-compose up -d
