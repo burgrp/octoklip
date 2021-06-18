@@ -9,7 +9,7 @@ services:
     volumes: 
       - /dev:/dev
       - /tmp:/tmp
-      - /data/klipper:/data
+      - /data/octoklip:/data
     environment:
       KLIPPER_LOG: "/data/klipper.log"
       KLIPPER_CONFIG: "/data/printer.cfg"
@@ -25,6 +25,6 @@ services:
     volumes:
       - /dev:/dev
       - /tmp:/tmp
-      - /data/octoprint:/root/.octoprint
+      - /data/octoklip:/root
     labels:
       farm.device.services: "90"
