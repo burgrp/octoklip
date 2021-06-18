@@ -15,7 +15,7 @@ cd octoprint
 docker buildx build --platform linux/arm/v7,linux/amd64 . -t burgrp/octoprint --push
 ```
 
-### Klipper
+### Klipper3D
 
 ```sh
 cd klipper
@@ -60,4 +60,35 @@ nsenter -t 1 -m -u -n -i reboot
 Shutdown system
 ```
 nsenter -t 1 -m -u -n -i poweroff
+```
+
+## Klipper3D firmware for Anet A8 using USBASP
+
+### build and flash firmware
+
+```sh
+sudo apt-get install avrdude gcc-avr avr-libc
+git clone https://github.com/KevinOConnor/klipper.git
+cd klipper
+make menuconfig
+# select atmega1284p
+make
+avrdude -p atmega1284p -c usbasp -U out/klipper.elf.hex
+```
+### USBASP to Anet A8 wiring
+
+```
+ USBASP                                      Anet A8  6pin  10 pin
+--------                                     ---------------------
+
+ 1 MOSI -----------\                                          1
+ 2 5V   ----------- \ --\                                     2
+ 3 GND               \   \             /------ MISO    1      3
+ 4 GND                \   \---------- / ------ 5V      2      4
+ 5 RST  -----------\   \       /---- / ------- SCK     3      5
+ 6 GND              \   \---- / --- / -------- MOSI    4      6
+ 7 SCK  ----\        \------ / --- / --------- RST     5      7
+ 8 GND       \--------------/     /    /------ GND     6      8
+ 9 MISO -------------------------/    /                       9
+10 GND  -----------------------------/                       10
 ```

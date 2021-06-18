@@ -3,6 +3,7 @@ version: "2.3"
 services:
   klipper:
     image: burgrp/klipper
+    container_name: klipper
     restart: always
     privileged: true
     volumes: 
@@ -15,6 +16,7 @@ services:
 
   octoprint:
     image: burgrp/octoprint
+    container_name: octoprint
     restart: always
     privileged: true
     pid: "host"
