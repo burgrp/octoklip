@@ -1,7 +1,7 @@
 FROM ubuntu
 
-RUN apt-get update && \
-    apt-get install -y python3-pip python3-dev python3-setuptools python3-virtualenv git libyaml-dev build-essential
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq python3-pip python3-dev python3-setuptools python3-virtualenv git libyaml-dev build-essential ffmpeg
 
 WORKDIR /opt/octoprint
 

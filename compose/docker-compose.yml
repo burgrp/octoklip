@@ -20,11 +20,24 @@ services:
     restart: always
     privileged: true
     pid: "host"
-    ports:
-      - 90:5000
+    network_mode: "host"
     volumes:
       - /dev:/dev
       - /tmp:/tmp
       - /data/octoklip:/root
     labels:
-      farm.device.services: "90"
+      farm.device.services: "5000"
+
+  webcam:
+    image: burgrp/webcam
+    container_name: webcam
+    restart: always
+    privileged: true
+    pid: "host"
+    network_mode: "host"
+    volumes:
+      - /dev:/dev
+      - /tmp:/tmp
+    labels:
+      farm.device.services: "6000"
+    

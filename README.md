@@ -12,23 +12,30 @@ docker run --rm --privileged docker/binfmt:820fdd95a9972a5308930a2bdfb8573dd4447
 
 ```sh
 cd octoprint
-docker buildx build --platform linux/arm/v7,linux/amd64 . -t burgrp/octoprint --push
+docker buildx build --platform linux/arm64/v8 . -t burgrp/octoprint --push
 ```
 
 ### Klipper3D
 
 ```sh
 cd klipper
-docker buildx build --platform linux/arm/v7,linux/amd64 . -t burgrp/klipper --push
+docker buildx build --platform linux/arm64/v8 . -t burgrp/klipper --push
+```
+
+### Webcam
+
+```sh
+cd klipper
+docker buildx build --platform linux/arm64/v8 . -t burgrp/webcam --push
 ```
 
 ## DEVICE.FARM installation
 
-Host image build for OrangePi Zero:
+Host image build for OrangePi One Plus:
 ```sh
-export BUILDER_HOME=~/df/image-builder/builder
-$BUILDER_HOME/build burgrp/orangepi-zero-octoprint \
-    orangepi-zero \
+export BUILDER_HOME=$HOME/df/image-builder/builder
+$BUILDER_HOME/build burgrp/orangepi-one-plus-octoprint \
+    orangepi-one-plus \
     dropbear avahi \
     ./host-image-layer \
     $BUILDER_HOME/../device-farm
@@ -36,7 +43,7 @@ $BUILDER_HOME/build burgrp/orangepi-zero-octoprint \
 
 Host image installation:
 ```sh
-defa install <device-id> /dev/mmcblk0 --wifi=ssid:password --ssh - -i burgrp/orangepi-zero-octoprint
+defa install <device-id> /dev/mmcblk0 --wifi=ssid:password --ssh - -i burgrp/orangepi-one-plus-octoprint
 ```
 
 ```sh
