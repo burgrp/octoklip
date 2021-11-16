@@ -31,19 +31,15 @@ docker buildx build --platform linux/arm64/v8 . -t burgrp/webcam --push
 
 ## DEVICE.FARM installation
 
-Host image build for OrangePi One Plus:
+Host image build for Raspberry 2 B:
 ```sh
 export BUILDER_HOME=$HOME/df/image-builder/builder
-$BUILDER_HOME/build burgrp/orangepi-one-plus-octoprint \
-    orangepi-one-plus \
-    dropbear avahi \
-    ./host-image-layer \
-    $BUILDER_HOME/../device-farm
+$BUILDER_HOME/build burgrp/rpi-2-b-octoprint rpi-2-b dropbear avahi ./host-image-layer $BUILDER_HOME/../device-farm
 ```
 
 Host image installation:
 ```sh
-defa install <device-id> /dev/mmcblk0 --wifi=ssid:password --ssh - -i burgrp/orangepi-one-plus-octoprint
+defa install <device-id> /dev/mmcblk0 --wifi=ssid:password --ssh - -i burgrp/rpi-2-b-octoprint
 ```
 
 ```sh
