@@ -1,32 +1,10 @@
 # octoklip
 Octoprint + Klipper docker image
 
-## Image build
-
-### binfmt
-```sh
-docker run --rm --privileged docker/binfmt:820fdd95a9972a5308930a2bdfb8573dd4447ad3
-```
-
-### OctoPrint
+## Docker images build
 
 ```sh
-cd octoprint
-docker buildx build --platform linux/arm64/v8 . -t burgrp/octoprint --push
-```
-
-### Klipper3D
-
-```sh
-cd klipper
-docker buildx build --platform linux/arm64/v8 . -t burgrp/klipper --push
-```
-
-### Webcam
-
-```sh
-cd klipper
-docker buildx build --platform linux/arm64/v8 . -t burgrp/webcam --push
+./build-docker-images
 ```
 
 ## DEVICE.FARM installation
@@ -43,7 +21,6 @@ defa install <device-id> /dev/mmcblk0 --wifi=ssid:password --ssh - -i burgrp/rpi
 ```
 
 ```sh
-cd compose
 defa proxy <device-id> -- docker-compose up -d
 ```
 

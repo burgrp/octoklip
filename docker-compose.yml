@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   klipper:
-    image: burgrp/klipper
+    image: burgrp/klipper-armv6
     container_name: klipper
     restart: always
     privileged: true
@@ -15,7 +15,7 @@ services:
       KLIPPER_CONFIG: "/data/printer.cfg"
 
   octoprint:
-    image: burgrp/octoprint
+    image: burgrp/octoprint-armv6
     container_name: octoprint
     restart: always
     privileged: true
@@ -29,7 +29,7 @@ services:
       farm.device.services: "5000"
 
   webcam:
-    image: burgrp/webcam
+    image: burgrp/webcam-armv6
     container_name: webcam
     restart: always
     privileged: true

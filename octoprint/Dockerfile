@@ -1,7 +1,8 @@
-FROM ubuntu
+FROM debian:buster
 
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq python3-pip python3-dev python3-setuptools python3-virtualenv git libyaml-dev build-essential ffmpeg
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq python3-pip python3-dev git libyaml-dev build-essential ffmpeg
+RUN pip3 install virtualenv setuptools
 
 WORKDIR /opt/octoprint
 

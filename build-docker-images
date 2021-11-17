@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -x
+set -e
+
+PLATFORM=linux/arm/v6
+
+docker run --rm --privileged linuxkit/binfmt:v0.8
+
+cd octoprint
+docker buildx build --platform $PLATFORM . -t burgrp/octoprint-armv6 --push
+cd ../klipper
+docker buildx build --platform $PLATFORM . -t burgrp/klipper-armv6 --push
+cd ../webcam
+docker buildx build --platform $PLATFORM . -t burgrp/webcam-armv6 --push
